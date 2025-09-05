@@ -31,7 +31,7 @@ SVMs were introduced by __Vladimir Vapnik and colleagues__ in the 1990s and beca
 
 * Equation of hyperplane:
   
- #  w.x+b=0
+    **w.x+b=0**
 
 
 * __Hard Margin SVM__ → strict separation, no errors allowed.
@@ -107,7 +107,12 @@ Most real-world data is __not linearly separable__. To handle this, SVM uses the
 2. Effective for nonlinear classification using kernel trick.
 3. Robust against overfitting if parameters are tuned properly.
 
----
+# ✅ Applications of SVM 
+While SVMs can be applied for a number of tasks, these are some of the most popular applications of SVMs across industries.
+                            **Text classification**
+   <img width="225" height="225" alt="image" src="https://github.com/user-attachments/assets/2d9bb626-46c2-43bf-8998-293263fb3ce0" />
+                       SVMs are commonly used in natural language processing (NLP) for tasks such as sentiment analysis, spam detection, and topic modeling. 
+                          They lend themselves to these data as they perform well with high-dimensional data.
 
 # ❌ Limitations of SVM
 
@@ -115,10 +120,8 @@ Most real-world data is __not linearly separable__. To handle this, SVM uses the
 2. Choice of kernel & hyperparameters is critical.
 3. Hard to interpret compared to models like decision trees.
 
----
 
 # 📊 Example in Python (scikit-learn)
-
 from sklearn import datasets
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.svm import SVC
@@ -151,4 +154,3 @@ print("Best Parameters:", grid.best_params_)
 # Evaluate
 y_pred = grid.predict(X_test)
 print(classification_report(y_test, y_pred))
-

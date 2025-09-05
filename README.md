@@ -47,19 +47,42 @@ Most real-world data is __not linearly separable__. To handle this, SVM uses the
 * Kernels map the data into __higher-dimensional space__ to make it linearly separable.
 * Common Kernels:
 
-  # Linear Kernel
-  # Polynomial Kernel
-  # Radial Basis Function (RBF) / Gaussian Kernel
-  # Sigmoid Kernel
+  ## ⚙️ Common SVM Kernels
 
+    ### 🔹 Linear Kernel
+    - Simplest kernel, no transformation applied.
+    - Best when data is **linearly separable** (a straight line or hyperplane can separate classes).
+    - Equation:  
+      K(x, y) = x · y
+          
+    ### 🔹 Polynomial Kernel
+    - Maps data into a **higher-dimensional space** using polynomial features.
+    - Useful when data is not linearly separable but has polynomial relationships.
+    - Equation:  
+      K(x, y) = (x · y + c)^d  
+      (where `d` = degree of polynomial, `c` = constant)
+    
+    ### 🔹 Radial Basis Function (RBF) / Gaussian Kernel
+    - Most widely used kernel.
+    - Creates **nonlinear decision boundaries** by considering the similarity between points.
+    - Great for complex data where classes are not linearly separable.
+    - Equation:  
+      K(x, y) = exp(-γ ||x − y||²)  
+      (γ controls influence of single training point)
+    
+    ### 🔹 Sigmoid Kernel
+    - Based on the **sigmoid function**, similar to activation in neural networks.
+    - Works well in some cases but less popular than RBF.
+    - Equation:  
+      K(x, y) = tanh(α (x · y) + c)  
+      (α and c are constants)
 
 # 3. Support Vector Regression (SVR)
 
 * Extension of SVM for **regression tasks**.
 * Finds a hyperplane within a **tolerance margin (ε)**.
 * Useful in **time series prediction, stock forecasting, etc.**
-
----
+  
 
 # ⚙️ Key Hyperparameters in SVM
 

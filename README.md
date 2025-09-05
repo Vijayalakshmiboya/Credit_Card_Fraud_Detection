@@ -99,7 +99,25 @@ Most real-world data is __not linearly separable__. To handle this, SVM uses the
    * Faster than grid search, good for large parameter spaces.
    * May not always find the absolute best parameters.
 
----
+# ✅ Applications of SVM 
+While SVMs can be applied for a number of tasks, these are some of the most popular applications of SVMs across industries.
+
+**Text classification**
+SVMs are commonly used in natural language processing (NLP) for tasks such as sentiment analysis, spam detection, and topic modeling. 
+They lend themselves to these data as they perform well with high-dimensional data.
+
+**Image classification**
+SVMs are applied in image classification tasks such as object detection and image retrieval. It can also be useful in security domains, 
+classifying an image as one that has been tampered with.
+
+**Bioinformatics**
+SVMs are also used for protein classification, gene expression analysis, and disease diagnosis. SVMs are often applied in cancer research 
+(link resides outside ibm.com) because they can detect subtle trends in complex datasets.
+
+**Geographic information system (GIS)**
+SVMs can analyze layered geophysical structures underground, filtering out the 'noise' from electromagnetic data. They have also helped to predict 
+the seismic liquefaction potential of soil, which is relevant to field of civil engineering.
+
 
 # ✅ Advantages of SVM
 
@@ -107,12 +125,7 @@ Most real-world data is __not linearly separable__. To handle this, SVM uses the
 2. Effective for nonlinear classification using kernel trick.
 3. Robust against overfitting if parameters are tuned properly.
 
-# ✅ Applications of SVM 
-While SVMs can be applied for a number of tasks, these are some of the most popular applications of SVMs across industries.
-                            **Text classification**
-   <img width="225" height="225" alt="image" src="https://github.com/user-attachments/assets/2d9bb626-46c2-43bf-8998-293263fb3ce0" />
-                       SVMs are commonly used in natural language processing (NLP) for tasks such as sentiment analysis, spam detection, and topic modeling. 
-                          They lend themselves to these data as they perform well with high-dimensional data.
+
 
 # ❌ Limitations of SVM
 
@@ -121,9 +134,12 @@ While SVMs can be applied for a number of tasks, these are some of the most popu
 3. Hard to interpret compared to models like decision trees.
 
 
-# 📊 Example in Python (scikit-learn)
+## 🔍 Hyperparameter Tuning in SVM
+
+### 1️⃣ Plain SVM (default parameters)
+```python
 from sklearn import datasets
-from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn.metrics import classification_report
 
@@ -131,26 +147,14 @@ from sklearn.metrics import classification_report
 iris = datasets.load_iris()
 X, y = iris.data, iris.target
 
-# Split data
+# Train-test split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Define SVM model
+# Plain SVM (default parameters)
 svm = SVC()
-
-# Hyperparameter grid
-param_grid = {
-    'C': [0.1, 1, 10],
-    'gamma': [1, 0.1, 0.01],
-    'kernel': ['linear', 'rbf']
-}
-
-# Grid Search
-grid = GridSearchCV(svm, param_grid, refit=True, verbose=2, cv=5)
-grid.fit(X_train, y_train)
-
-# Best parameters
-print("Best Parameters:", grid.best_params_)
+svm.fit(X_train, y_train)
 
 # Evaluate
-y_pred = grid.predict(X_test)
+y_pred = svm.predict(X_test)
+print("Plain SVM Results:")
 print(classification_report(y_test, y_pred))
